@@ -6,14 +6,38 @@ from sklearn import metrics
 # going to use a wrapper to allow a keras nn to be used with cross_val_score()
 from tensorflow.keras.wrappers.scikit_learn import KerasClassifier
 import numpy as np
+import matplotlib.pyplot as plt
+plt.style.use('fivethirtyeight')
 
 def test_classifier(classifier, train, labels, cross_val=True):
     classifier.fit(train, labels)
     predicted_labels = classifier.predict(train)
+    label_names = ['functional', 'non functional', 'functional needs repair']
+    precision = metrics.precision_score(labels, predicted_labels, average=None, labels = label_names)
+    recall = metrics.recall_score(labels, predicted_labels, average=None, labels = label_names)
     print("Accuracy:", metrics.accuracy_score(labels, predicted_labels))
-    print("Precision:", metrics.precision_score(labels, predicted_labels, average=None))
-    print("Recall:", metrics.recall_score(labels, predicted_labels, average=None))
+    print("Precision:", precision)
+    print("Recall:", recall)
+
+    ## plot the precision and recall for the different classes
+
+    fig = plt.figure(figsize=(8,12))
+    pos = np.arange(len(label_names))
+    ax1 = fig.add_subplot(211)
+    ax2 = fig.add_subplot(212)
     
+    ax1.bar(pos, precision, align='center', tick_label=label_names, linewidth=1)
+    ax2.bar(pos, recall, align='center', tick_label=label_names, linewidth=1)
+
+    # ax1.set_xticks(pos, labels = label_names)
+    # ax2.set_xticks(pos, labels = label_names)
+    ax1.set_ylabel('Precision')
+    ax2.set_ylabel('Recall')
+    
+    plt.show()
+    
+
+
     if cross_val == True:
 
         # more challenging than expected to get recall and precision to play nicely with cross_validate()
