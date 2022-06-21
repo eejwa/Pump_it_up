@@ -1,0 +1,47 @@
+name: tf1
+channels:
+  - conda-forge
+  - r
+  - defaults
+dependencies:
+  - ipython
+  - tensorflow-base
+  - tensorflow-metadata
+  - requests
+  - cartopy
+  - python=3.7
+  - graphviz
+  - numexpr
+  - tensorflow-hub
+  - pip
+  - scipy
+  - scikit-image
+  - pyopengl
+  - tensorflow-datasets
+  - imageio
+  - widgetsnbextension
+  - basemap
+  - jupyter
+  - python-graphviz
+  - nltk
+  - tensorflow-probability
+  - py-xgboost
+  - grpcio
+  - tqdm
+  - pandas
+  - joblib
+  - ipywidgets
+  - tensorflow-estimator=2.6.0
+  - pillow
+  - tensorflow
+  - tensorboard
+  - jupyter_contrib_nbextensions
+  - nbdime
+  - pydot
+  - scikit-learn
+  - numpy
+  - wheel=0.33.6
+  - matplotlib
+  - h5py=2.10.0
+  - spacy
+prefix: /Users/jamieward/opt/anaconda3/envs/tf1
